@@ -16,8 +16,11 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 
 driver.get("https://opensource-demo.orangehrmlive.com/")
 print(driver.title)
+driver.current_url
+driver.page_source
 
-
+WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.NAME, "username"))).is_displayed()
+WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.NAME, "username"))).is_enabled()
 WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.NAME, "username"))).send_keys("Admin")
 WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "input[type='password']"))).send_keys("admin123")
 WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[type="submit"]'))).click()
